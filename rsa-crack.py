@@ -3,7 +3,7 @@ from colorama import Fore, Back, Style
 from bs4 import BeautifulSoup
 from Crypto.Util.number import inverse, long_to_bytes
 
-BANNER = """
+BANNER = r"""
 #----------------------------------------------
 # 
 #               \   $    $   / 
@@ -20,10 +20,11 @@ BANNER = """
 
 
 """
-print(BANNER)
-c = int(input("Enter c : "))
+print(Fore.CYAN + BANNER + Style.RESET_ALL)
+c = int(input(Fore.MAGENTA + "Enter c : "))
 n = int(input("Enter n : "))
 e = int(input("Enter e : "))
+print("\n")
 
 url = "https://factordb.com/index.php"
 params = {"query": n}
@@ -42,8 +43,6 @@ def function() :
         phi = (p - 1) * (q - 1)
         d = inverse(e, phi)
         m = pow(c, d, n)
-        
-        print("\n")
         print("   p =", p,"\n")
         print("   q =", q,"\n")
         print("   d =", d,"\n")
